@@ -42,7 +42,7 @@ void particle::update(float speed, float noise)
 
 	// add the repel force
 	
-	vel -= repelFrc; // the minus sign because it is a repel force 
+	vel += repelFrc; // i use the plus sign to attract instead of repel
 
 	// use the force to increment velocity
 	vel += frc;
