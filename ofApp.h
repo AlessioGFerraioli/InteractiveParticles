@@ -54,10 +54,14 @@ class ofApp : public ofBaseApp{
 		// variable to find the contour of the object to find
 		ofxCvContourFinder contourFinder;
 
-
+		// colors to use for particles
+		ofColor col[4]; 
+		
+		
 		// add elements to gui for this interactivity
 		ofxIntSlider threshold;  // threshold of the mask
 		ofxToggle bLearnBackground; // use this button to capture ("learn") the background
 		ofxToggle showCV; // show and not show the webcam and the threshold
+		ofxColorSlider color[4]; // sliders for choosing the colors
 
 };

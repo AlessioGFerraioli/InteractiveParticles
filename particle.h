@@ -21,5 +21,7 @@ public:
 
 	ofVec2f uniqueVal; // this will be used in conjuction with the noise, each particle has a unique value for the noise 
 	float size;
+
+	int uniqueCol; // number identifying the color of the particle
 };
 

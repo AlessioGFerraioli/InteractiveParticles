@@ -26,6 +26,9 @@ void particle::setup()
 	// inizializza drag che conunteracts speed
 	drag = ofRandom(0.97, 0.99);
 
+	// initialize random color
+	uniqueCol = ofRandom(0, 4);
+
 }
 
 void particle::update(float speed, float noise)
@@ -34,8 +37,6 @@ void particle::update(float speed, float noise)
 	frc.x = ofSignedNoise(uniqueVal.x, ofGetElapsedTimeMillis());
 	frc.y = ofSignedNoise(uniqueVal.y, ofGetElapsedTimeMillis());
 
-	// change force by noise factor
-	frc *= noise;
 
 	// use the drag to reduce velocity
 	vel *= drag;
@@ -44,8 +45,8 @@ void particle::update(float speed, float noise)
 	
 	vel += repelFrc; // i use the plus sign to attract instead of repel
 
-	// use the force to increment velocity
-	vel += frc;
+	// use the force to increment velocity times the noise factor
+	vel += frc*noise;
 	
 	// RESET AT BORDER
 	// if particle hits the border it reappers on the other side
@@ -64,6 +65,7 @@ void particle::update(float speed, float noise)
 	}
 
 	
+	// UPDATE POSITION
 	// update position depending on velocity and speed
 	pos += vel*speed;
 

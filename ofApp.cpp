@@ -43,12 +43,17 @@ void ofApp::setup() {
 	gui.add(bLearnBackground.setup("capture bg", false));
 	// button for showing the webcam
 	gui.add(showCV.setup("show webcam", false));
+	gui.add(color[0].setup("color1", ofColor(45, 237, 38), ofColor(0,0,0), ofColor(255, 255, 255)));
+	gui.add(color[1].setup("color2", ofColor(219, 2, 60), ofColor(0, 0, 0), ofColor(255, 255, 255)));
+	gui.add(color[2].setup("color3", ofColor(245, 96, 47), ofColor(0, 0, 0), ofColor(255, 255, 255)));
+	gui.add(color[3].setup("color4", ofColor(187, 26, 219), ofColor(0, 0, 0), ofColor(255, 255, 255)));
 
 
 	// create a certain number of particle
 	// to add values to a vector use the function assign
-	// i initialize 100 particles and store them in the vector
-	p.assign(100, particle());
+	// i initialize 1000 particles and store them in the vector
+	int num_particles = 1000;
+	p.assign(num_particles, particle());
 
 	// loop to setup all the particle
 
@@ -132,8 +137,9 @@ void ofApp::draw(){
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 
 	// draw white particles
-	ofSetColor(255, 255, 255, 255);
+	
 	for (int i = 0; i < p.size(); i++) {
+		ofSetColor(color[p[i].uniqueCol]);
 		p[i].draw(1);
 	}
 
