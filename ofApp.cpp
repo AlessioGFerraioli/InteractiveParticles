@@ -34,9 +34,9 @@ void ofApp::setup() {
 	// setup the overallSpeed value with name speed and initial value 1, min value 0 and max value 3
 	gui.add(overallSpeed.setup("speed", 1, 0, 3));
 	// and noiseAmount slider
-	gui.add(noiseAmount.setup("noise", 1, 0, 3));
+	gui.add(noiseAmount.setup("noise", 0.8, 0, 3));
 	// and trail slider
-	gui.add(trail.setup("trail", 6.0, 0, 20));
+	gui.add(trail.setup("trail", 16.0, 0, 25));
 	// threshold
 	gui.add(threshold.setup("threshold", 80, 0, 255));
 	// button for learning the background
@@ -46,8 +46,8 @@ void ofApp::setup() {
 	// buttonn to change forces from repel or attractive
 	gui.add(repelOrAttract.setup("repulsive force", false));
 	// color sliders
-	gui.add(color[0].setup("color1", ofColor(45, 237, 38), ofColor(0,0,0), ofColor(255, 255, 255)));
-	gui.add(color[1].setup("color2", ofColor(219, 2, 60), ofColor(0, 0, 0), ofColor(255, 255, 255)));
+	gui.add(color[0].setup("color1", ofColor(45, 40, 23), ofColor(0,0,0), ofColor(255, 255, 255)));
+	gui.add(color[1].setup("color2", ofColor(12, 25, 89), ofColor(0, 0, 0), ofColor(255, 255, 255)));
 	gui.add(color[2].setup("color3", ofColor(245, 96, 47), ofColor(0, 0, 0), ofColor(255, 255, 255)));
 	gui.add(color[3].setup("color4", ofColor(187, 26, 219), ofColor(0, 0, 0), ofColor(255, 255, 255)));
 
@@ -150,7 +150,7 @@ void ofApp::draw(){
 	if(showCV) {
 		// FOR SEEING WHAT THE IMAGES PRODUCED LOOK LIKE:
 		ofSetHexColor(0xffffff);
-		grayDiff.draw(10, 10);
+		colorImg.draw(10, 10);
 		// draw the contours:
 		ofFill();
 		ofSetHexColor(0x333333);
