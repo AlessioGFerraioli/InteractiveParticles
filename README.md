@@ -3,4 +3,4 @@
 
 ## Preview
 
- ![App preview](preview.png)
+ ![App preview](preview.jpg)
