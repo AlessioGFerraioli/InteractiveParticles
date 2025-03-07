@@ -43,6 +43,9 @@ void ofApp::setup() {
 	gui.add(bLearnBackground.setup("capture bg", false));
 	// button for showing the webcam
 	gui.add(showCV.setup("show webcam", false));
+	// buttonn to change forces from repel or attractive
+	gui.add(repelOrAttract.setup("repulsive force", false));
+	// color sliders
 	gui.add(color[0].setup("color1", ofColor(45, 237, 38), ofColor(0,0,0), ofColor(255, 255, 255)));
 	gui.add(color[1].setup("color2", ofColor(219, 2, 60), ofColor(0, 0, 0), ofColor(255, 255, 255)));
 	gui.add(color[2].setup("color3", ofColor(245, 96, 47), ofColor(0, 0, 0), ofColor(255, 255, 255)));
@@ -117,7 +120,7 @@ void ofApp::update(){
 	for (int i = 0; i < p.size(); i++) {
 		// update the repel points with the current blobpoints
 		p[i].repel(blobPts);
-		p[i].update(overallSpeed,noiseAmount);
+		p[i].update(overallSpeed,noiseAmount,repelOrAttract);
 	}
 
 }

@@ -31,7 +31,7 @@ void particle::setup()
 
 }
 
-void particle::update(float speed, float noise)
+void particle::update(float speed, float noise, bool repulsive)
 {
 	// update the force with noise. we use unique val for have a specific force for each particle; also use ofGetElapsedTimeMillis so the force cahanges every frame
 	frc.x = ofSignedNoise(uniqueVal.x, ofGetElapsedTimeMillis());
@@ -41,9 +41,13 @@ void particle::update(float speed, float noise)
 	// use the drag to reduce velocity
 	vel *= drag;
 
-	// add the repel force
-	
-	vel += repelFrc; // i use the plus sign to attract instead of repel
+	// add the repel or attractive force depending on bool repulsive
+	if (repulsive == false) {
+		vel += repelFrc; // i use the plus sign to attract instead of repel
+	}
+	else {
+		vel -= repelFrc;
+	}
 
 	// use the force to increment velocity times the noise factor
 	vel += frc*noise;

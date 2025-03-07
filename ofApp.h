@@ -63,5 +63,6 @@ class ofApp : public ofBaseApp{
 		ofxToggle bLearnBackground; // use this button to capture ("learn") the background
 		ofxToggle showCV; // show and not show the webcam and the threshold
 		ofxColorSlider color[4]; // sliders for choosing the colors
+		ofxToggle repelOrAttract; // button to change the webcam interation from repel to attract
 
 };
