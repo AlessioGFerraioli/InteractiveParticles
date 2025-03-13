@@ -81,7 +81,7 @@ void particle::draw(float sizeDot)
 	// draw them as circles, for example
 	//ofDrawCircle(pos.x, pos.y, size * sizeDot);
 	// i will draw them as my witch icon
-	icon.draw(pos.x, pos.y, size * sizeDot);
+	icon.draw(pos.x, pos.y, size * sizeDot, size * sizeDot);
 }
 
 void particle::repel(vector<ofVec2f> repelPt)

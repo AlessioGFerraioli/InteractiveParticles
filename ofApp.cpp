@@ -36,7 +36,7 @@ void ofApp::setup() {
 	// and noiseAmount slider
 	gui.add(noiseAmount.setup("noise", 0.8, 0, 3));
 	// and trail slider
-	gui.add(trail.setup("trail", 16.0, 0, 35));
+	gui.add(trail.setup("trail", 35, 0, 85));
 	// threshold
 	gui.add(threshold.setup("threshold", 80, 0, 255));
 	// button for learning the background
@@ -50,7 +50,7 @@ void ofApp::setup() {
 	// create a certain number of particle
 	// to add values to a vector use the function assign
 	// i initialize 1000 particles and store them in the vector
-	int num_particles = 50;
+	int num_particles = 500;
 	p.assign(num_particles, particle());
 
 	// loop to setup all the withces and frogs particles
@@ -146,11 +146,14 @@ void ofApp::draw(){
 	ofSetColor(0, 0, 0, trail);
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 
-	// draw particles
-	for (int i = 0; i < p.size(); i++) {
+	// draw witches and frogs particles
+	for (int i = 1; i < p.size(); i++) {
 		ofSetColor(255,255,255);
-		p[i].draw(1);
+		p[i].draw(20); // set the size (there is still variation)
 	}
+
+	// draw logo
+	p[0].draw(100);
 
 
 	if(showCV) {
