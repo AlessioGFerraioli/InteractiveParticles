@@ -61,5 +61,6 @@ class ofApp : public ofBaseApp{
 		ofxToggle bLearnBackground; // use this button to capture ("learn") the background
 		ofxToggle showCV; // show and not show the webcam and the threshold
 		ofxToggle repelOrAttract; // button to change the webcam interation from repel to attract
+		ofxFloatSlider forceIntensity; // intensity of the force determined by the webcam
 
 };

@@ -8,7 +8,7 @@ public:
 
 	// methods
 	void setup(string iconPath);
-	void update(float speed, float noise, bool repulsive);
+	void update(float speed, float noise, bool repulsive, float forceIntensity);
 	void draw(float sizeDot);
 	void repel(vector<ofVec2f>repelPt); // use these points to repel particles from the silouhette in the video
 
