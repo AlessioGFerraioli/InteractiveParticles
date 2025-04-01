@@ -36,7 +36,7 @@ void ofApp::setup() {
 	// and noiseAmount slider
 	gui.add(noiseAmount.setup("noise", 0.8, 0, 3));
 	// and trail slider
-	gui.add(trail.setup("trail", 35, 0, 85));
+	gui.add(trail.setup("trail", 16.0, 0, 25));
 	// threshold
 	gui.add(threshold.setup("threshold", 80, 0, 255));
 	// button for learning the background
@@ -45,31 +45,24 @@ void ofApp::setup() {
 	gui.add(showCV.setup("show webcam", false));
 	// buttonn to change forces from repel or attractive
 	gui.add(repelOrAttract.setup("repulsive force", false));
+	// color sliders
+	gui.add(color[0].setup("color1", ofColor(45, 40, 23), ofColor(0,0,0), ofColor(255, 255, 255)));
+	gui.add(color[1].setup("color2", ofColor(12, 25, 89), ofColor(0, 0, 0), ofColor(255, 255, 255)));
+	gui.add(color[2].setup("color3", ofColor(245, 96, 47), ofColor(0, 0, 0), ofColor(255, 255, 255)));
+	gui.add(color[3].setup("color4", ofColor(187, 26, 219), ofColor(0, 0, 0), ofColor(255, 255, 255)));
 
 
 	// create a certain number of particle
 	// to add values to a vector use the function assign
 	// i initialize 1000 particles and store them in the vector
-	int num_particles = 500;
+	int num_particles = 1000;
 	p.assign(num_particles, particle());
 
-	// loop to setup all the withces and frogs particles
-	for (int i = 1; i < p.size(); i++) {
-		uniqueIcon = ofRandom(0, 3);
+	// loop to setup all the particle
 
-		if (uniqueIcon == 0) {
-			p[i].setup("witch1-icon.png");
-		}
-		else if (uniqueIcon == 1) {
-			p[i].setup("witch2-icon.png");
-		}
-		else if (uniqueIcon == 2) {
-			p[i].setup("frog-icon.png");
-		}
+	for (int i = 0; i < p.size(); i++) {
+		p[i].setup();
 	}
-
-	// setup the logo particle
-	p[0].setup("lsug-icon.png");
 
 }
 
@@ -146,14 +139,12 @@ void ofApp::draw(){
 	ofSetColor(0, 0, 0, trail);
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 
-	// draw witches and frogs particles
-	for (int i = 1; i < p.size(); i++) {
-		ofSetColor(255,255,255);
-		p[i].draw(20); // set the size (there is still variation)
+	// draw white particles
+	
+	for (int i = 0; i < p.size(); i++) {
+		ofSetColor(color[p[i].uniqueCol]);
+		p[i].draw(1);
 	}
-
-	// draw logo
-	p[0].draw(100);
 
 
 	if(showCV) {

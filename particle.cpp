@@ -4,7 +4,7 @@ particle::particle()
 {
 }
 
-void particle::setup(string iconPath)
+void particle::setup()
 {
 	// initialize with random position
 	pos.x = ofRandomWidth();
@@ -21,12 +21,13 @@ void particle::setup(string iconPath)
 	uniqueVal.y = ofRandom(-1000, 1000);
 
 	// initialize random size
-	size = ofRandom(1, 3);
+	size = ofRandom(3, 5);
 
 	// inizializza drag che conunteracts speed
 	drag = ofRandom(0.97, 0.99);
-	
-	icon.load(iconPath);
+
+	// initialize random color
+	uniqueCol = ofRandom(0, 4);
 
 }
 
@@ -79,9 +80,7 @@ void particle::draw(float sizeDot)
 
 	// here we choose how to draw particles
 	// draw them as circles, for example
-	//ofDrawCircle(pos.x, pos.y, size * sizeDot);
-	// i will draw them as my witch icon
-	icon.draw(pos.x, pos.y, size * sizeDot, size * sizeDot);
+	ofDrawCircle(pos.x, pos.y, size * sizeDot);
 }
 
 void particle::repel(vector<ofVec2f> repelPt)
