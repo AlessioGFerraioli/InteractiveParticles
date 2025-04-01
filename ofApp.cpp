@@ -34,9 +34,9 @@ void ofApp::setup() {
 	// setup the overallSpeed value with name speed and initial value 1, min value 0 and max value 3
 	gui.add(overallSpeed.setup("speed", 1, 0, 3));
 	// and noiseAmount slider
-	gui.add(noiseAmount.setup("noise", 0.6, 0, 3));
+	gui.add(noiseAmount.setup("noise", 0.8, 0, 3));
 	// and trail slider
-	gui.add(trail.setup("trail", 50, 0, 85));
+	gui.add(trail.setup("trail", 35, 0, 85));
 	// threshold
 	gui.add(threshold.setup("threshold", 80, 0, 255));
 	// button for learning the background
@@ -45,8 +45,6 @@ void ofApp::setup() {
 	gui.add(showCV.setup("show webcam", false));
 	// buttonn to change forces from repel or attractive
 	gui.add(repelOrAttract.setup("repulsive force", false));
-	// slider for intensity of force
-	gui.add(forceIntensity.setup("force intensity", 0.5, 0, 1.5));
 
 
 	// create a certain number of particle
@@ -129,7 +127,7 @@ void ofApp::update(){
 	for (int i = 0; i < p.size(); i++) {
 		// update the repel points with the current blobpoints
 		p[i].repel(blobPts);
-		p[i].update(overallSpeed,noiseAmount,repelOrAttract,forceIntensity);
+		p[i].update(overallSpeed,noiseAmount,repelOrAttract);
 	}
 
 }
@@ -155,7 +153,7 @@ void ofApp::draw(){
 	}
 
 	// draw logo
-	p[0].draw(300);
+	p[0].draw(100);
 
 
 	if(showCV) {
