@@ -21,7 +21,7 @@ void particle::setup()
 	uniqueVal.y = ofRandom(-1000, 1000);
 
 	// initialize random size
-	size = ofRandom(3, 5);
+	size = ofRandom(0.5, 1);
 
 	// inizializza drag che conunteracts speed
 	drag = ofRandom(0.97, 0.99);

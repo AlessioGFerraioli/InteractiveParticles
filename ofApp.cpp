@@ -55,7 +55,7 @@ void ofApp::setup() {
 	// create a certain number of particle
 	// to add values to a vector use the function assign
 	// i initialize 1000 particles and store them in the vector
-	int num_particles = 1000;
+	int num_particles = 5000;
 	p.assign(num_particles, particle());
 
 	// loop to setup all the particle
